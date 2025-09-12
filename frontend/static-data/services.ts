@@ -11,7 +11,7 @@ export const services = [
     name: "Social Media Content Creation",
     description:
       "Creation of engaging short-form videos, stories, and posts designed to boost brand or personal presence across various social media platforms, tailored to modern trends and audience preferences.",
-    videos: ["/HeroVid.mp4"],
+    videos: ["/HeroVid8.mov"],
   },
   {
     id: "service-3",
