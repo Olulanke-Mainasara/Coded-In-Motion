@@ -27,9 +27,7 @@ const Nav = () => {
   }
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full flex ${pathname === "/" ? "justify-start" : "justify-between"} gap-10 z-40 pr-4`}
-    >
+    <nav className={`fixed top-0 left-0 w-full flex gap-10 z-40 pr-4`}>
       <Link href="/">
         <Image src={Logo} alt="Logo" className="w-24 h-20" />
       </Link>
@@ -41,13 +39,13 @@ const Nav = () => {
           Home
         </Link>
         <Link
-          href="/about-us"
+          href="/about"
           className="xl:text-neutral-400 hover:text-white transition-colors"
         >
           About
         </Link>
         <Link
-          href="/contact"
+          href="/about#contact"
           className="xl:text-neutral-400 hover:text-white transition-colors"
         >
           Contact

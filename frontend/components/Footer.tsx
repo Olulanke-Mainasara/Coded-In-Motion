@@ -132,8 +132,8 @@ const Footer = () => {
 
           <div className="md:absolute inset-0 flex flex-col justify-center md:gap-4 backdrop-brightness-[5%]">
             <p className="text-3xl xl:text-5xl text-neutral-400">We are</p>
-            <p className="text-[50px] md:text-5xl lg:text-7xl xl:text-9xl">
-              CodedInMotion
+            <p className="text-[50px] md:text-[58px] lg:text-7xl xl:text-9xl">
+              Coded In Motion
             </p>
             <p className="text-3xl xl:text-5xl text-neutral-400 text-right">
               ...making moments unforgettable
