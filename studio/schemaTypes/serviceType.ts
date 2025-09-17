@@ -9,7 +9,7 @@ export const serviceType = defineType({
       name: 'title',
       title: 'Service Title',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'icon',
@@ -28,7 +28,7 @@ export const serviceType = defineType({
       type: 'array',
       of: [
         {type: 'image', options: {hotspot: true}},
-        {type: 'file', title: 'Video'},
+        {type: 'mux.video', name: 'video', title: 'Video'},
       ],
       description: 'Add an image or video showing an example of this service',
     }),

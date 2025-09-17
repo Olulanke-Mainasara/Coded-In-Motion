@@ -61,10 +61,8 @@ const Hero = () => {
       </div>
       <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center backdrop-brightness-[5%]">
         <div className="absolute top-6 right-4">
-          <p className="text-right pl-4 md:max-w-lg text-lg md:text-xl text-neutral-400">
-            Every frame holds a story, every moment a heartbeat. Through light,
-            motion, and vision, we capture not just what is seen, but what is
-            felt—memories that live far beyond the screen.
+          <p className="text-right text-4xl md:text-5xl max-w-lg text-neutral-400">
+            Capturing stories beyond expectations
           </p>
         </div>
         <div>
@@ -73,8 +71,10 @@ const Hero = () => {
           </h1>
         </div>
         <div className="absolute bottom-6 left-4">
-          <p className="text-4xl md:text-5xl max-w-lg text-neutral-400 text-balance">
-            Capturing stories beyond expectations
+          <p className="pr-4 md:max-w-lg text-lg md:text-xl text-neutral-400">
+            Every frame holds a story, every moment a heartbeat. Through light,
+            motion, and vision, we capture not just what is seen, but what is
+            felt—memories that live far beyond the screen.
           </p>
         </div>
       </div>

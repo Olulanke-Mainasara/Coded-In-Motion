@@ -3,6 +3,18 @@
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { client } from "@/sanity/client";
+import Image from "next/image";
+import MuxVideo from "./MuxVideo";
+import { FOOTER_QUERY, options } from "@/lib/queries";
+
+interface FooterMedia {
+  playbackId?: string;
+  title?: string;
+  alt?: string;
+  imageUrl?: string;
+}
 
 const icon = {
   hidden: {
@@ -22,16 +34,43 @@ const icon = {
 };
 
 const Footer = () => {
+  const pathname = usePathname();
+  const [footerMedia, setFooterMedia] = React.useState<FooterMedia | null>(
+    null
+  );
+
+  React.useEffect(() => {
+    const fetchFooterMedia = async () => {
+      const footerMedia = await client.fetch<FooterMedia>(
+        FOOTER_QUERY,
+        {},
+        options
+      );
+      setFooterMedia(footerMedia);
+    };
+    fetchFooterMedia();
+  }, []);
+
+  if (pathname.startsWith("/studio")) {
+    return null;
+  }
+
+  const { playbackId, title, alt, imageUrl } = footerMedia || {};
+
   return (
     <footer className="md:h-[50dvh] xl:h-[80dvh] flex flex-col md:flex-row gap-4 p-4 pt-0 mt-60">
-      <div className="md:w-2/5 xl:w-[30%] h-full flex items-end">
-        <video
-          src={"/HeroVid6.mov"}
-          autoPlay
-          muted
-          loop
-          className="w-full h-[50dvh] md:h-full object-cover"
-        ></video>
+      <div className="md:w-2/5 xl:w-[30%] h-[50dvh] md:h-full flex items-end overflow-hidden">
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt={alt || title || "Footer image"}
+            width={1200}
+            height={800}
+            className="rounded-lg shadow-md"
+          />
+        ) : playbackId ? (
+          <MuxVideo playbackId={playbackId} title={title} />
+        ) : null}
       </div>
       <div className="flex flex-col gap-4 md:w-3/5 xl:w-[70%]">
         <div className="grow relative">
@@ -103,10 +142,12 @@ const Footer = () => {
         </div>
 
         <hr />
-        <div className="flex justify-between">
-          <div className="flex gap-4">
+        <div className="flex flex-col md:flex-row items-center gap-2 justify-between">
+          <div className="flex gap-6">
             <Link
-              href={"https://www.instagram.com/codedinmotion/"}
+              href={
+                "https://www.tiktok.com/@coded.in.motion?_t=ZS-8znigyGKFxY&_r=1"
+              }
               className="text-neutral-400 hover:text-white transition-colors"
             >
               Tiktok
@@ -115,7 +156,7 @@ const Footer = () => {
               href={"https://www.instagram.com/codedinmotion/"}
               className="text-neutral-400 hover:text-white transition-colors"
             >
-              Whatsapp
+              +234 810 730 2381
             </Link>
             <Link
               href={"mailto:codedinmotion25@gmail.com"}

@@ -1,6 +1,19 @@
+import { client } from "@/sanity/client";
+import { SanityDocument } from "next-sanity";
+import Image from "next/image";
 import React from "react";
+import MuxVideo from "../MuxVideo";
+import { OUR_TRUTH_QUERY, options } from "@/lib/queries";
 
-const OurTruth = () => {
+const OurTruth = async () => {
+  const ourTruthMedia = await client.fetch<SanityDocument>(
+    OUR_TRUTH_QUERY,
+    {},
+    options
+  );
+
+  const { playbackId, title, alt, imageUrl } = ourTruthMedia;
+
   return (
     <section className="md:h-[50dvh] xl:h-[80dvh]">
       <div className="h-full flex flex-col md:flex-row gap-4 w-full">
@@ -11,14 +24,18 @@ const OurTruth = () => {
             belief that every code has a motion.
           </p>
         </div>
-        <div className="w-full h-full flex items-center">
-          <video
-            src={"/HeroVid7.mp4"}
-            autoPlay
-            muted
-            loop
-            className="h-[50dvh] w-full md:h-full object-cover"
-          ></video>
+        <div className="w-full h-full flex items-center overflow-hidden">
+          {imageUrl ? (
+            <Image
+              src={imageUrl}
+              alt={alt || title}
+              width={1200}
+              height={800}
+              className="rounded-lg shadow-md"
+            />
+          ) : playbackId ? (
+            <MuxVideo playbackId={playbackId} title={title} />
+          ) : null}
         </div>
         <div className="md:w-3/5 flex items-center">
           <p className="text-3xl md:text-base lg:text-xl xl:text-3xl px-4 text-neutral-400">

@@ -1,95 +1,130 @@
-# 🎬 Coded-in-Motion — Creating Stories Beyond Expectations ✨
+# Coded-In-Motion
 
-Every project begins with a spark.  
-Coded-in-Motion is where **technology meets creativity**, weaving code and content into experiences that move.
-
-This repository holds two worlds in harmony:  
-a **frontend** that tells the story, and a **Sanity Studio** where those stories are shaped.
+A monorepo project built with **Next.js** (frontend) and **Sanity Studio** (content management).  
+Both live in the same repository, with Sanity Studio embedded directly inside Next.js at `/studio`.
 
 ---
 
 ## 📂 Project Structure
 
-Coded-in-Motion/
-│
-├── frontend/ # The stage — a modern frontend (Next.js/React)
-│ ├── src/ # Scripts, components, and interactions
-│ ├── public/ # Static assets (images, icons, etc.)
-│ └── package.json # Frontend dependencies & scripts
-│
-├── sanity-studio/ # The backstage — Sanity.io Studio
-│ ├── schemas/ # Blueprints of your content
-│ ├── sanity.config.ts
-│ └── package.json
-│
-└── README.md # You are here
+```
+
+Coded-In-Motion/
+├── frontend/   # Next.js 15 app
+├── studio/     # Sanity Studio config
+└── package.json (root with workspaces + scripts)
+
+```
+
+- `frontend/` → Handles the main web application.
+- `studio/` → Contains Sanity schema, config, and plugins.
+- Root `package.json` → Orchestrates both using **npm workspaces**.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Development
 
-Clone the repo and bring the motion to life:
+### Start Next.js + Sanity Studio together
 
-```bash
-git clone https://github.com/<your-username>/Coded-in-Motion.git
-cd Coded-in-Motion
-```
-
-Install dependencies for both apps:
+From the root:
 
 ```bash
-# Frontend
-cd frontend
-npm install
-
-# Sanity Studio
-cd ../sanity-studio
-npm install
-```
-
-Run development servers:
-
-```bash
-# Frontend
-npm run dev
-
-# Sanity Studio
 npm run dev
 ```
 
-Frontend usually runs on `http://localhost:3000`
-Sanity Studio runs on `http://localhost:3333`
+This runs:
+
+- `frontend` (Next.js) → [http://localhost:3000](http://localhost:3000)
+- `studio` (Sanity Studio, embedded) → [http://localhost:3000/studio](http://localhost:3000/studio)
+
+### Run individually
+
+```bash
+# Next.js only
+npm run dev --workspace=frontend
+
+# Sanity Studio only
+npm run dev --workspace=studio
+```
 
 ---
 
-## 🛠 Tech Stack
+## 🧩 Sanity Studio Setup
 
-- **Frontend** → Next.js / React
-- **CMS** → [Sanity.io](https://www.sanity.io/)
-- **Language** → TypeScript / JavaScript
-- **Styling** → TailwindCSS (or any style system of choice)
+The Studio is embedded inside Next.js at `/studio`.
+Key setup in `frontend/app/studio/[[...index]]/page.tsx`:
 
----
+```tsx
+"use client";
+import { NextStudio } from "next-sanity/studio";
+import config from "../../../studio/sanity.config";
 
-## 📦 Deployment
+export default function StudioPage() {
+  return <NextStudio config={config} />;
+}
+```
 
-- **Frontend** → Vercel / Netlify
-- **Sanity Studio** → Sanity Hosting (`sanity deploy`) or custom host (Vercel, Netlify)
+### Plugins
 
----
-
-## 🤝 Contribution
-
-Contributions are welcome — ideas, code, or even just inspiration.
-Fork the repo, create magic, and send in a pull request.
-
----
-
-## 🎭 License
-
-This project is licensed under the MIT License.
-Because stories should be free to move.
+- `deskTool` → Provides the main content editing desk UI.
+- `@sanity/vision` → Query your dataset with GROQ inside the studio.
 
 ---
 
-✨ _Coded-in-Motion — not just built, but performed._
+## 🌐 Deployment
+
+### Next.js (Frontend + Embedded Studio)
+
+- Deploy the `frontend/` directory to **Vercel**.
+- Root directory in Vercel should be set to `frontend`.
+
+Once deployed:
+
+- App → `https://myapp.com`
+- Studio → `https://myapp.com/studio`
+
+### Alternative: Standalone Studio
+
+If you prefer, you can still deploy Studio separately via:
+
+```bash
+cd studio
+sanity deploy
+```
+
+This gives you a hosted Studio on `https://<your-project>.sanity.studio`.
+
+---
+
+## ⚡ Tech Stack
+
+- [Next.js 15](https://nextjs.org/) — React framework with App Router + Turbopack
+- [Sanity.io](https://www.sanity.io/) — Headless CMS with real-time editing
+- [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) — Monorepo management
+- [npm-run-all2](https://github.com/mysticatea/npm-run-all) — Parallel script runner
+
+---
+
+## 🛠 Scripts
+
+At the root:
+
+```bash
+npm run dev         # Run both frontend and studio
+npm run dev:next    # Run frontend only
+npm run dev:studio  # Run studio only
+npm run format      # Prettier formatting
+npm run lint        # Lint Next.js code
+```
+
+---
+
+## 📖 Notes
+
+- Large assets (videos, `.mp4`, `.mov`) are ignored via `.gitignore` and should be uploaded to Sanity or cloud storage, not Git.
+- One lockfile (`package-lock.json`) is kept at the root for workspace consistency.
+- If you want to protect `/studio`, integrate [NextAuth.js](https://next-auth.js.org/) or Sanity role-based access.
+
+---
+
+✨ **Creating Stories Beyond Expectations.**

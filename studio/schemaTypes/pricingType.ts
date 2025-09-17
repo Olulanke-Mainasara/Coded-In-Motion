@@ -1,13 +1,13 @@
 import {defineField, defineType} from 'sanity'
 
 export const priceType = defineType({
-  name: 'pricingCategory',
-  title: 'Pricing Category',
+  name: 'pricing',
+  title: 'Pricing',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Category Title',
+      title: 'Category',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
@@ -17,16 +17,16 @@ export const priceType = defineType({
       type: 'text',
     }),
     defineField({
-      name: 'priceTypes',
-      title: 'Price Types',
+      name: 'types',
+      title: 'Types',
       type: 'array',
       of: [
         {
           type: 'object',
           fields: [
             defineField({
-              name: 'typeTitle',
-              title: 'Type Title',
+              name: 'title',
+              title: 'Title',
               type: 'string',
               validation: (rule) => rule.required(),
             }),

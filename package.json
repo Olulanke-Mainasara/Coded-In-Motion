@@ -10,8 +10,8 @@
     "dev:studio": "npm run dev --workspace=studio"
   },
   "devDependencies": {
+    "@sanity/prettier-config": "^2.0.1",
     "npm-run-all2": "^5.0.2",
-    "prettier": "^3.6.2",
-    "@sanity/prettier-config": "^2.0.1"
+    "prettier": "^3.6.2"
   }
 }
