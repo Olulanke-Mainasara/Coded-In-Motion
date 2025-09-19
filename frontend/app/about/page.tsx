@@ -2,8 +2,10 @@ import { client } from "@/sanity/client";
 import { SanityDocument } from "next-sanity";
 import Image from "next/image";
 import { ABOUT_QUERY, options } from "@/lib/queries";
-import ContactForm from "@/components/ContactForm";
+// import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import Link from "next/link";
+import { Heart, MailIcon, PhoneIcon } from "lucide-react";
 
 interface PricingType {
   title: string;
@@ -128,7 +130,54 @@ const AboutUs = async () => {
             want to say hi? Fill out the form below and we&apos;ll get back to
             you as soon as possible.
           </p>
-          <ContactForm />
+          <div className="max-w-(--breakpoint-xl) mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-10 px-6 md:px-0 mt-4">
+            <div className="text-center flex flex-col items-center">
+              <div className="h-12 w-12 flex items-center justify-center bg-white/5 dark:bg-white/10 text-white rounded-full">
+                <MailIcon />
+              </div>
+              <h3 className="mt-6 font-semibold text-2xl">Email</h3>
+              <p className="mt-2 text-neutral-400 text-lg">
+                Our friendly team is here to help.
+              </p>
+              <Link
+                className="mt-4 font-medium text-white text-2xl"
+                href="mailto:codedinmotion25@gmail.com"
+              >
+                codedinmotion25@gmail.com
+              </Link>
+            </div>
+            <div className="text-center flex flex-col items-center">
+              <div className="h-12 w-12 flex items-center justify-center bg-white/5 dark:bg-white/10 text-white rounded-full">
+                <Heart />
+              </div>
+              <h3 className="mt-6 font-semibold text-2xl">Social</h3>
+              <p className="mt-2 text-neutral-400 text-lg">
+                Check out our page.
+              </p>
+              <Link
+                className="mt-4 font-medium text-white text-2xl"
+                href="https://www.tiktok.com/@coded.in.motion?_t=ZS-8znigyGKFxY&_r=1"
+              >
+                @coded.in.motion
+              </Link>
+            </div>
+            <div className="text-center flex flex-col items-center">
+              <div className="h-12 w-12 flex items-center justify-center bg-white/5 dark:bg-white/10 text-white rounded-full">
+                <PhoneIcon />
+              </div>
+              <h3 className="mt-6 font-semibold text-2xl">Phone</h3>
+              <p className="mt-2 text-neutral-400 text-lg">
+                Mon-Fri from 8am to 5pm.
+              </p>
+              <Link
+                className="mt-4 font-medium text-white text-2xl"
+                href="tel:+234 810 730 2381"
+              >
+                +234 810 730 2381
+              </Link>
+            </div>
+          </div>
+          {/* <ContactForm /> */}
         </section>
       </main>
       <Footer />

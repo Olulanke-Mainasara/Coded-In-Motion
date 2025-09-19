@@ -150,13 +150,13 @@ const Footer = () => {
               }
               className="text-neutral-400 hover:text-white transition-colors"
             >
-              Tiktok
+              Social
             </Link>
             <Link
-              href={"https://www.instagram.com/codedinmotion/"}
+              href={"tel:+2348107302381"}
               className="text-neutral-400 hover:text-white transition-colors"
             >
-              +234 810 730 2381
+              Phone
             </Link>
             <Link
               href={"mailto:codedinmotion25@gmail.com"}
