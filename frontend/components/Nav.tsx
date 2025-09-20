@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import Logo from "@/public/CIM-logo.jpg";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 
 const Nav = () => {

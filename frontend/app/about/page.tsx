@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ABOUT_QUERY, options } from "@/lib/queries";
 // import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Heart, MailIcon, PhoneIcon } from "lucide-react";
 import WhoWeAreH1 from "@/components/Animations/WhoWeAreH1";
 

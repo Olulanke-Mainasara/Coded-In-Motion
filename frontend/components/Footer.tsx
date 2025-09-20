@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import React from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
