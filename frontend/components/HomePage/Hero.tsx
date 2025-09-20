@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import HeroH1 from "../Animations/HeroH1";
 
 const icon = {
   hidden: {
@@ -62,13 +63,11 @@ const Hero = () => {
       <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center backdrop-brightness-[5%]">
         <div className="absolute top-6 right-4">
           <p className="text-right text-4xl md:text-5xl max-w-lg text-neutral-400">
-            Capturing stories beyond expectations
+            Capturing your stories beyond expectations
           </p>
         </div>
         <div>
-          <h1 className="text-5xl md:text-8xl text-balance lg:text-9xl max-w-4xl text-center">
-            Every Code Has Its Motion
-          </h1>
+          <HeroH1 />
         </div>
         <div className="absolute bottom-6 left-4">
           <p className="pr-4 md:max-w-lg text-lg md:text-xl text-neutral-400">

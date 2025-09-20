@@ -8,6 +8,7 @@ import { client } from "@/sanity/client";
 import Image from "next/image";
 import MuxVideo from "./MuxVideo";
 import { FOOTER_QUERY, options } from "@/lib/queries";
+import FooterP from "./Animations/FooterP";
 
 interface FooterMedia {
   playbackId?: string;
@@ -132,9 +133,7 @@ const Footer = () => {
 
           <div className="md:absolute inset-0 flex flex-col justify-center md:gap-4 backdrop-brightness-[5%]">
             <p className="text-3xl xl:text-5xl text-neutral-400">We are</p>
-            <p className="text-[50px] md:text-[58px] lg:text-7xl xl:text-9xl">
-              Coded In Motion
-            </p>
+            <FooterP />
             <p className="text-3xl xl:text-5xl text-neutral-400 text-right">
               ...making moments unforgettable
             </p>

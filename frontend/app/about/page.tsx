@@ -6,6 +6,7 @@ import { ABOUT_QUERY, options } from "@/lib/queries";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { Heart, MailIcon, PhoneIcon } from "lucide-react";
+import WhoWeAreH1 from "@/components/Animations/WhoWeAreH1";
 
 interface PricingType {
   title: string;
@@ -49,14 +50,12 @@ const AboutUs = async () => {
             )}
             <div className="absolute flex flex-col justify-end inset-0 p-4 bg-gradient-to-b from-transparent to-black text-right lg:text-left">
               <p className="md:text-lg">The talent behind the shutter</p>
-              <p className="text-5xl lg:text-6xl">Lanre My Ski</p>
+              <p className="text-5xl lg:text-6xl">Lanre Mustapha</p>
             </div>
           </div>
 
           <div className="lg:w-3/5">
-            <h1 className="text-4xl md:text-6xl xl:text-8xl font-bold capitalize">
-              {about.title}
-            </h1>
+            <WhoWeAreH1 text={about.title} />
             <p className="mt-4 md:text-xl text-neutral-400">
               {about.description}
             </p>
@@ -136,9 +135,7 @@ const AboutUs = async () => {
                 <MailIcon />
               </div>
               <h3 className="mt-6 font-semibold text-2xl">Email</h3>
-              <p className="mt-2 text-neutral-400 text-lg">
-                Our friendly team is here to help.
-              </p>
+              <p className="mt-2 text-neutral-400 text-lg">Send us an email.</p>
               <Link
                 className="mt-4 font-medium text-white text-2xl"
                 href="mailto:codedinmotion25@gmail.com"
@@ -167,7 +164,7 @@ const AboutUs = async () => {
               </div>
               <h3 className="mt-6 font-semibold text-2xl">Phone</h3>
               <p className="mt-2 text-neutral-400 text-lg">
-                Mon-Fri from 8am to 5pm.
+                All day, every day.
               </p>
               <Link
                 className="mt-4 font-medium text-white text-2xl"

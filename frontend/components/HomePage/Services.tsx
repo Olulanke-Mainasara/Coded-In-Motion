@@ -4,6 +4,7 @@ import React from "react";
 import MuxVideo from "../MuxVideo";
 import Image from "next/image";
 import { SERVICE_QUERY, options } from "@/lib/queries";
+import ServicesH2 from "../Animations/ServicesH2";
 
 const Services = async () => {
   const services = await client.fetch<SanityDocument[]>(
@@ -15,9 +16,9 @@ const Services = async () => {
   return (
     <section className="min-h-screen px-4 space-y-4 md:space-y-8">
       <div className="flex justify-between items-center gap-5 md:gap-10">
-        <h2 className="text-6xl lg:text-8xl xl:text-9xl">Services</h2>
-        <div className="w-full h-1 bg-white"></div>
-        <p className="max-w-xl lg:text-xl text-neutral-400 hidden md:block">
+        <ServicesH2 />
+        <div className="w-full h-1 bg-white max-w-36 md:max-w-sm"></div>
+        <p className="max-w-md lg:text-xl text-neutral-400 hidden md:block">
           From event highlights to brand videos, from short reels to cinematic
           shots, our goal is simple — to make your moments unforgettable and
           your message impossible to ignore.
